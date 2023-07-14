@@ -22,11 +22,11 @@ int main(void)
 		{
 			if (i != j)
 			{
-				if (!(i > 48 && j == 48))
+				if (j > i)
 				{
 					putchar(i);
 					putchar(j);
-					if (i != 57 || j != 56)
+					if (i != 56 || j != 57)
 					{
 						putchar(',');
 						putchar(' ');
