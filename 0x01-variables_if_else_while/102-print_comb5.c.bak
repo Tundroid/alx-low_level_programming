@@ -10,32 +10,40 @@
 *
 * Return: 0 upon successful execution
 */
-
-int main(void);
-
 int main(void)
 {
-	int i, j, k, l, cwl, cwr;
+	int i, j, k, l, hwl, hwr, cwl, cwr, new_j, new_i;
 
+	//printf("Start here\n\n");
 	i = 48;
 	while (i <= 57)
 	{
+		new_i = 1;
 		j = 48;
 		while (j <= 57)
 		{
-			k = 48;
+			new_j = 1;
+			k = new_i == 1 && new_j == 1 ? i : 48;
 			while (k <= 57)
 			{
-				l = 48;
+				l = new_j == 1 ? j : 48;
+				hwl = i + j;
+				hwr = k + l;
 				while (l <= 57)
 				{
-					cwl = (i - 48) * 10 + (j - 48);
-					cwr = (k - 48) * 10 + (l - 48);
-					if ((i == j && j == k && k == l) || (i == k && j == l) || (cwr < cwl))
+					cwl = i + j;
+					cwr = k + l;
+					//printf("\nCur weight: [%d, %d] - heavy weight: [%d, %d]\n", cwl, cwr, hwl, hwr);
+					int cnd1 = (i == j && j == k && k == l);
+					int cnd2 = (hwl > cwl && hwr > cwr);
+					//printf("\nTest 1: %d - Test 2: %d\n", cnd1, cnd2);
+					if ((i == j && j == k && k == l) || (i == k && j == l))
 					{
 						l++;
 						continue;
 					}
+					hwl = cwl;
+					hwr = cwr;
 					putchar(i);
 					putchar(j);
 					putchar(' ');
@@ -49,8 +57,10 @@ int main(void)
 					l++;
 				}
 				k++;
+				new_j = 0;
 			}
 			j++;
+			new_i = 0;
 		}
 		i++;
 	}
