@@ -17,15 +17,13 @@ int main(void)
 	i = 48;
 	while (i <= 57)
 	{
-		j = 48;
+		j = i + 1;
 		while (j <= 57)
 		{
-			k = 48;
+			k = j + 1;
 			while (k <= 57)
 			{
-			if (i != j && j != k)
-			{
-				if (j > i && k > j)
+				if (i != j && j != k)
 				{
 					putchar(i);
 					putchar(j);
@@ -36,8 +34,7 @@ int main(void)
 						putchar(' ');
 					}
 				}
-			}
-			k++;
+				k++;
 			}
 			j++;
 		}

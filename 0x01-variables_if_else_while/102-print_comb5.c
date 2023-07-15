@@ -12,23 +12,33 @@
 */
 int main(void)
 {
-	int i, j;
+	int i, j, k, l;
 
 	i = 48;
 	while (i <= 57)
 	{
-		j = i + 1;
+		j = 48;
 		while (j <= 57)
 		{
-			if (i != j)
+			k = i;
+			while (k <= 57)
 			{
-				putchar(i);
-				putchar(j);
-				if (i != 56 || j != 57)
+				l = j + 1;
+				while (l <= 57)
 				{
-					putchar(',');
+					putchar(i);
+					putchar(j);
 					putchar(' ');
+					putchar(k);
+					putchar(l);
+					if (i != 57 || j != 56 || k != 57 || l != 57)
+					{
+						putchar(',');
+						putchar(' ');
+					}
+					l++;
 				}
+				k++;
 			}
 			j++;
 		}
