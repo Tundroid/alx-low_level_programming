@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
 
 /**
 * main - Entry point of program
@@ -13,8 +12,8 @@ int main(void)
 	int i;
 
 	for (i = 0; i < sizeof(string); i++)
-		putchar(string[i]);
-	putchar('\n');
+		_putchar(string[i]);
+	_putchar('\n');
 
 	return (0);
 }
