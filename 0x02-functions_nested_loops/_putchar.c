@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 
 /**
 * _putchar - Custom putchar function
@@ -10,6 +10,5 @@
 */
 int _putchar(char ch)
 {
-	putchar(ch);
-	return (ch);
+	return (write(1, &ch, 1));
 }
