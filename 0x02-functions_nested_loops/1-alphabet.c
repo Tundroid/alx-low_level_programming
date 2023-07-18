@@ -1,4 +1,4 @@
-void _putchar(char);
+int _putchar(char);
 /**
 * print_alphabet - Prints a-z
 *

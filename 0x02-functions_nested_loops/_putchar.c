@@ -8,7 +8,8 @@
 * the stdout using the putchar function.
 * Return: nothing
 */
-void _putchar(char ch)
+int _putchar(char ch)
 {
 	putchar(ch);
+	return (ch);
 }
