@@ -6,7 +6,7 @@
 */
 void print_times_table(int n)
 {
-	int i, j, product, k, arr[] = {' ', ' ', ' ', '0'};
+	int i, j, product, k, arr[4];
 
 	if (n < 0 || n > 15)
 		return;
@@ -15,7 +15,6 @@ void print_times_table(int n)
 		for (j = 0; j <= n; j++)
 		{
 			product = i * j;
-
 			for (k = 3; k >= 0; k--)
 			{
 				if (product > 0)
@@ -25,7 +24,7 @@ void print_times_table(int n)
 				}
 				else
 				{
-					break;
+					arr[k] = k == 3 ? '0' : ' ';
 				}
 			}
 
