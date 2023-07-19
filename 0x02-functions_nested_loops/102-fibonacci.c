@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 
 /**
 * main - check the code.
@@ -7,17 +8,17 @@
 */
 int main(void)
 {
-	unsigned long long n = 2, n_prev = 1;
-	unsigned long long i = 3, tmp;
+	int64_t n = 2, n_prev = 1;
+	int64_t i = 3, tmp;
 
-	printf("%llu, %llu, ", n_prev, n);
+	printf("%ld, %ld, ", n_prev, n);
 
 	for ( ; i <= 50; i++)
 	{
 		tmp = n_prev;
 		n_prev = n;
 		n += tmp;
-		printf("%llu", n);
+		printf("%ld", n);
 		if (i != 50)
 			printf(", ");
 	}
