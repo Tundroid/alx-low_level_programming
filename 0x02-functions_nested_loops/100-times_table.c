@@ -6,12 +6,10 @@
 */
 void print_times_table(int n)
 {
-	int i, j, product, k;
-	int arr[] = {' ', ' ', ' ', '0'};
+	int i, j, product, k, arr[] = {' ', ' ', ' ', '0'};
 
 	if (n < 0 || n > 15)
 		return;
-
 	for (i = 0; i <= n; i++)
 	{
 		for (j = 0; j <= n; j++)
@@ -32,12 +30,19 @@ void print_times_table(int n)
 			}
 
 			for (k = 0; k < 4; k++)
-				_putchar(arr[k]);
-
-			if (j != n)
 			{
-				_putchar(',');
+				if (j == 0)
+				{
+					_putchar(arr[3]);
+					break;
+				}
+				else
+				{
+					_putchar(arr[k]);
+				}
 			}
+			if (j != n)
+				_putchar(',');
 		}
 		_putchar('\n');
 	}
