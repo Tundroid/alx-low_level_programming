@@ -10,7 +10,7 @@ int main(void)
 {
 	int n = 2, n_prev = 1, tmp, sum = 0;
 
-	while (n <= 20)
+	while (n <= 4000000)
 	{
 		sum += n % 2 == 0 ? n : 0;
 		tmp = n_prev;
