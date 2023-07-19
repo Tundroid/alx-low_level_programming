@@ -9,14 +9,5 @@
 */
 int _isalpha(int c)
 {
-	printf("Passed value of c: %c\n", c);
-	if (c - 65 <= 25)
-	{
-		return (1);
-	} else if (c - 97 <= 25)
-	{
-		return (1);
-	} else
-		return 0;
-	/*return (c - 65 <= 25 || c - 97 <= 25 ? 1 : 0);*/
+	return ((c - 65 >= 0 && c - 65 <= 25) || (c - 97 >= 0 && c - 97 <= 25) ? 1 : 0);
 }
