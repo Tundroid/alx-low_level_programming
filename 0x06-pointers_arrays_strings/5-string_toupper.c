@@ -1,5 +1,4 @@
 #include "main.h"
-#include <ctype.h>
 /**
 * string_toupper - changes all lowercase letters to uppercase
 * @s: string to be changed to uppercase
