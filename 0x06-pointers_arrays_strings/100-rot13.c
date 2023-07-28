@@ -1,5 +1,6 @@
 #include "main.h"
 #include <ctype.h>
+#include <stdbool.h>
 
 /**
 * rot13 - encrypts a string using rot13 ceasar cipher
@@ -15,7 +16,7 @@ char *rot13(char *s)
 	{
 		if (isalpha(s[i]))
 		{
-			_case = islower(s[i]) ? 'a' : 'A';
+			_case = (bool)islower(s[i]) * 97 + (bool)isupper(s[i]) * 65;
 			s[i] = (s[i] +  13 - _case) % 26 + _case;
 		}
 		i++;
