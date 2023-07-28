@@ -27,30 +27,19 @@ char *leet(char *s)
 */
 char _toleet(char ch)
 {
-	switch (ch)
+	int i = 0;
+	char lower[] = {'a', 'e', 'o', 't', 'l'};
+	char upper[] = {'A', 'E', 'O', 'T', 'L'};
+	char code[] = {'4', '3', '0', '7', '1'};
+
+	while (i < 6)
 	{
-	case 'a':
-	case 'A':
-		ch = '4';
-		break;
-	case 'e':
-	case 'E':
-		ch = '3';
-		break;
-	case 'o':
-	case 'O':
-		ch = '0';
-		break;
-	case 't':
-	case 'T':
-		ch = '7';
-		break;
-	case 'l':
-	case 'L':
-		ch = '1';
-		break;
-	default:
-		break;
+		if (lower[i] == ch || upper[i] == ch)
+		{
+			ch = code[i];
+			break;
+		}
+		i++;
 	}
 	return (ch);
 }
