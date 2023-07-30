@@ -9,7 +9,7 @@
 */
 void print_buffer(char *b, int size)
 {
-	int i = 0, j, null_flag;
+	int i = 0, j, null_flag = 0;
 
 	if (size <= 0)
 	{
