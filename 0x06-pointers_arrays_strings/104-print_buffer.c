@@ -23,14 +23,11 @@ void print_buffer(char *b, int size)
 		for (j = i; j < i + 10; j++)
 		{
 			if (j > size - 1)
-			{
-				printf("     ");
-			}
+				printf("  ");
 			else
-			{
-				printf("%02x%02x ", b[j], b[j + 1]);
-			}
-			j++;
+				printf("%02x", b[j]);
+			if ((j  + 1) % 2 == 0)
+				printf(" ");
 		}
 		for (j = i; j < i + 10; j++)
 		{
