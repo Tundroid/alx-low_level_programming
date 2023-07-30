@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-int isPrime(int);
+int isPrime(int64_t);
 
 /**
 * main - Program Entry Point
@@ -27,7 +27,7 @@ int main(void)
 *
 * Return: 0 is n is not prime and 1 if n is prime
 */
-int isPrime(int n)
+int isPrime(int64_t n)
 {
 	int i;
 
