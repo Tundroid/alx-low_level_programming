@@ -45,8 +45,8 @@ void print_buffer(char *b, int size)
 			}
 		}
 		i += 10;
+		printf("\n");
 		if (null_flag)
 			break;
-		printf("\n");
 	}
 }
