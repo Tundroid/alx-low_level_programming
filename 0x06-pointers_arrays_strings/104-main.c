@@ -9,7 +9,8 @@
 int main(void)
 {
     /* char buffer[] = "This is a string!\0And this is the rest of the #buffer :)\1\2\3\4\5\6\7#cisfun\n\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x20\x21\x34\x56#pointersarefun #infernumisfun\n"; */
-    char buffer[] = "Talk is cheap. Show me the code.";
+   /* char buffer[] = "Talk is cheap. Show me the code.";*/
+	char buffer[] = "Holberton ! #CisAwesome.And this is the rest of the #buffer.......:) #cisfun.................. !4V#pointersarefun #infernumisfun.";
 
     printf("%s\n", buffer);
     printf("---------------------------------\n");
