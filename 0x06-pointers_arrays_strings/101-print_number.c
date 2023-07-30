@@ -8,7 +8,8 @@ int _pow(int, int);
 */
 void print_number(int n)
 {
-	int x, m, radix_power = 0;
+	unsigned int x, m;
+	int radix_power = 0;
 
 	if (n == 0)
 	{
