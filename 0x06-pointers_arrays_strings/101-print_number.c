@@ -57,6 +57,6 @@ int _pow(int b, int p)
 
 	while (p > 0)
 		return (b * _pow(b, --p));
-	
+
 	return (-1);
 }
