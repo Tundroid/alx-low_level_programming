@@ -29,7 +29,7 @@ int main(void)
 */
 int isPrime(int64_t n)
 {
-	int i;
+	int64_t i;
 
 	for (i = 2; i <= n / 2; ++i)
 	{
