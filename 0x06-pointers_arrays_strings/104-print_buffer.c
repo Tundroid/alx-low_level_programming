@@ -11,6 +11,12 @@ void print_buffer(char *b, int size)
 {
 	int i = 0, j, null_flag;
 
+	if (size <= 0)
+	{
+		printf("\n");
+		return;
+	}
+
 	while (1)
 	{
 		printf("%08x: ", i);
