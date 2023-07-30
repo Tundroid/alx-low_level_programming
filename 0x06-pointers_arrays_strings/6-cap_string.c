@@ -21,7 +21,6 @@ char *cap_string(char *s)
 	{
 		if (_ispunct(s[i - 1]) && islower(s[i]))
 			s[i] = toupper(s[i]);
-		/* s[i] = s[i] == '\t' ? ' ' : s[i]; */
 	}
 	return (s);
 }
