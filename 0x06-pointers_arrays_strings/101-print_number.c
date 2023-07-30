@@ -19,7 +19,7 @@ void print_number(int n)
 	if (n < 0)
 	{
 		_putchar('-');
-		n = abs(n);
+		n = -n;
 	}
 	m = n;
 	while (m >= 10)
