@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib.h>
+#include <stdint.h>
 
 int _pow(int, int);
 /**
@@ -8,20 +8,21 @@ int _pow(int, int);
 */
 void print_number(int n)
 {
-	unsigned int x, m;
+	int64_t x, m, l;
 	int radix_power = 0;
 
-	if (n == 0)
+	l = n;
+	if (l == 0)
 	{
-		_putchar(n + 48);
+		_putchar(l + 48);
 		return;
 	}
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -(n + (n == -2147483648 ? 1 : 0));
+		l = -l;
 	}
-	m = n;
+	m = l;
 	while (m >= 10)
 	{
 		m =  m / 10;
@@ -36,7 +37,7 @@ void print_number(int n)
 
 	while (radix_power >= 0)
 	{
-		x = n / _pow(10, radix_power--);
+		x = l / _pow(10, radix_power--);
 		_putchar(x % 10 + 48);
 	}
 }
