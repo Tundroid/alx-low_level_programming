@@ -11,7 +11,7 @@ char *_strchr(char *s, char c)
 {
 	unsigned long int i = 0;
 
-	while (i < strlen(s))
+	while (i < strlen(s) + 1)
 	{
 		if (s[i] == c)
 			return (s + i);
