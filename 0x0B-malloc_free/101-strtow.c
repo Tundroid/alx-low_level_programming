@@ -22,7 +22,7 @@ char **strtow(char *str)
 		if (str[i == 0 ? i : i - 1] != ' ' && (str[i] == ' ' || str[i] == '\0'))
 			wc++;
 	}
-	words = (char **)malloc(wc > 0 ? ++wc : wc * sizeof(char *));
+	words = (char **)malloc((wc > 0 ? ++wc : wc) * sizeof(char *));
 	if (words != NULL)
 	{
 		for (i = 0; i <= (int)strlen(str); i++)
