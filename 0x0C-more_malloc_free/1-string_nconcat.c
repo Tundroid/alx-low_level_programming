@@ -21,7 +21,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s1 = malloc(sizeof(char));
 		if (s1 == NULL)
 			return (NULL);
-		s1 = '\0';
+		*s1 = '\0';
 		alloced_s1 = 1;
 	}
 
@@ -33,7 +33,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			free(s1);
 			return (NULL);
 		}
-		s2 = '\0';
+		*s2 = '\0';
 		alloced_s2 = 1;
 	}
 
