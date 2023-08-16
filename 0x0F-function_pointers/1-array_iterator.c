@@ -1,11 +1,16 @@
 #include "function_pointers.h"
 
 /**
-* print_name - prints a string using a callback
-* @name: string to be printed
-* @f: callback function
+* array_iterator - calls back a function on every
+* element of an array
+* @array: array of elements to be passed to the callback
+* @size: number of elements in array
+* @action: callback function
 */
-void print_name(char *name, void (*f)(char *))
+void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	f(name);
+	size_t i = 0;
+
+	for (; i < size;)
+		action(*(array + i++));
 }
