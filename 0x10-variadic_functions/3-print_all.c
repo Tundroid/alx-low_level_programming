@@ -1,5 +1,7 @@
 #include "variadic_functions.h"
 
+#define s_check(s) ((s == NULL) ? ("(nil)") : (s))
+
 /**
 * print_all - prints varaible params types
 * @format: format to print
@@ -30,9 +32,9 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				tmp = va_arg(list, char *);
-				if (tmp == NULL)
-					tmp = "(nil)";
-				printf("%s", tmp);
+				/*if (tmp == NULL)*/
+					/*tmp = "(nil)";*/
+				printf("%s", s_check(tmp));
 				break;
 			default:
 				ignored = 1;
