@@ -30,8 +30,10 @@ int main(int argc, char **argv)
 
 	for (i; i < bytes; i++)
 	{
-		printf("%02x ", opcode[i]);
+		printf("%02x", opcode[i]);
+		if (i < bytes - 1)
+			printf(" ");
 	}
-	printf("\b\n");
+	printf("\n");
 	return (0);
 }
