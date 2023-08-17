@@ -9,18 +9,15 @@
 */
 void print_all(const char * const format, ...)
 {
-	int i = 0, ignored;
+	int i = 0;
 	va_list list;
-	char *tmp;
+	char *s;
 
-	if (format != NULL)
+	va_start(list, format);
+	while (format != NULL && format[i] != '\0')
 	{
-		va_start(list, format);
-		while (format[i] != '\0')
+		switch (format[i++])
 		{
-			ignored = 0;
-			switch (format[i])
-			{
 			case 'c':
 				printf("%c", va_arg(list, int));
 				break;
@@ -31,20 +28,15 @@ void print_all(const char * const format, ...)
 				printf("%f", va_arg(list, double));
 				break;
 			case 's':
-				tmp = va_arg(list, char *);
-				/*if (tmp == NULL)*/
-					/*tmp = "(nil)";*/
-				printf("%s", s_check(tmp));
+				s = va_arg(list, char *);
+				printf("%s", s_check(s));
 				break;
 			default:
-				ignored = 1;
-				break;
-			}
-			if (!ignored && i < (int)strlen(format) - 1)
-				printf(", ");
-			i++;
+				continue;
 		}
-		va_end(list);
+		if (i < (int)strlen(format))
+			printf(", ");
 	}
+	va_end(list);
 	printf("\n");
 }
