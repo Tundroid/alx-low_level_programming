@@ -1,11 +1,9 @@
-section .data
-    message db 'Hello, Holberton', 0
-
-section .text
-    global _start
-
-_start:
-    push message
-    call printf
-    add esp, 4
-    ret
+          global    main
+          extern    printf
+main:
+	  mov   edi, format
+	  xor   eax, eax
+	  call  printf
+	  mov 	eax, 0
+	  ret
+format: db `Hello, Holberton\n`,0
