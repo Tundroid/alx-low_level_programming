@@ -1,98 +1,100 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <stdbool.h>
 
+void mul(char*, char*);
 /**
- * is_digit - checks if a string contains a non-digit char
- * @s: string to be evaluated
- *
- * Return: 0 if a non-digit is found, 1 otherwise
- */
-int is_digit(char *s)
+* main - program entry point
+* @argc: command line args count
+* @argv: command line args vector
+*
+* Description: if the number of command line args
+* is not exactly 3 or if either command line args
+* 1 or 2 are not consisting only of digits, Error
+* is printed and the program exits with status code 98
+* Return: 0 always
+*/
+int main(int argc, char **argv)
 {
-	int i = 0;
+	int i, j, check, set0, set1;
+	char *multiplicand, *multiplier;
 
-	while (s[i])
+	multiplicand = *(argv + 1);
+	multiplier = *(argv + 2);
+	set0 = set1 = i = j = 0;
+	if (argc != 3)
 	{
-		if (s[i] < '0' || s[i] > '9')
-			return (0);
-		i++;
+		printf("Error\n");
+		exit(98);
 	}
-	return (1);
-}
-
-/**
- * _strlen - returns the length of a string
- * @s: string to evaluate
- *
- * Return: the length of the string
- */
-int _strlen(char *s)
-{
-	int i = 0;
-
-	while (s[i] != '\0')
+	while (*(*(argv + 1) + i) != '\0' || *(*(argv + 2) + j) != '\0')
 	{
-		i++;
-	}
-	return (i);
-}
-
-/**
- * errors - handles errors for main
- */
-void errors(void)
-{
-	printf("Error\n");
-	exit(98);
-}
-
-/**
- * main - multiplies two positive numbers
- * @argc: number of arguments
- * @argv: array of arguments
- *
- * Return: always 0 (Success)
- */
-int main(int argc, char *argv[])
-{
-	char *s1, *s2;
-	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
-
-	s1 = argv[1], s2 = argv[2];
-	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
-		errors();
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
-	len = len1 + len2 + 1;
-	result = malloc(sizeof(int) * len);
-	if (!result)
-		return (1);
-	for (i = 0; i <= len1 + len2; i++)
-		result[i] = 0;
-	for (len1 = len1 - 1; len1 >= 0; len1--)
-	{
-		digit1 = s1[len1] - '0';
-		carry = 0;
-		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
+		check = *(*(argv + 1) + i) == '\0' || isdigit(*(*(argv + 1) + i));
+		check *= *(*(argv + 2) + j) == '\0' || isdigit(*(*(argv + 2) + j));
+		if (!check)
 		{
-			digit2 = s2[len2] - '0';
-			carry += result[len1 + len2 + 1] + (digit1 * digit2);
-			result[len1 + len2 + 1] = carry % 10;
-			carry /= 10;
+			printf("Error\n");
+			exit(98);
 		}
-		if (carry > 0)
-			result[len1 + len2 + 1] += carry;
+		if (*(*(argv + 1) + i) != '0' && !set0)
+			set0++;
+		if (*(*(argv + 2) + j) != '0' && !set1)
+			set1++;
+		if (*(*(argv + 1) + i) == '0' && !set0)
+			multiplicand++;
+		if (*(*(argv + 2) + j) == '0' && !set1)
+			multiplier++;
+		i = *(*(argv + 1) + i) != '\0' ? i + 1 : i;
+		j = *(*(argv + 2) + j) != '\0' ? j + 1 : j;
 	}
-	for (i = 0; i < len - 1; i++)
+	mul(multiplicand, multiplier);
+	return (0);
+}
+
+/**
+* mul - multipliers two integers of any length
+* @multiplicand: paramter
+* @multiplier: paramer
+*/
+void mul(char *multiplicand, char *multiplier)
+{
+	int len0 = strlen(multiplicand);
+	int len1 = strlen(multiplier);
+	int r_len = len0 + len1;
+	short digit0, digit1, tmp;
+	short *result = malloc(r_len * sizeof(short));
+	int i;
+
+	if (!result)
+		return;
+	r_len *= (bool)(len0 && len1);
+	if (r_len == 0)
 	{
-		if (result[i])
-			a = 1;
-		if (a)
-			putchar(result[i] + '0');
+		printf("0\n");
+		return;
 	}
-	if (!a)
-		putchar('0');
+	bzero(result, r_len * sizeof(short));
+	while (--len0 >= 0)
+	{
+		digit0 = multiplicand[len0] - '0';
+		tmp = 0;
+		while (--len1 >= 0)
+		{
+			digit1 = multiplier[len1] - '0';
+			tmp += result[len0 + len1 + 1] + digit0 * digit1;
+			result[len0 + len1 + 1] = tmp % 10;
+			tmp /= 10;
+		}
+		if (tmp > 0)
+			result[len0 + len1 + 1] += tmp;
+		len1 = strlen(multiplier);
+	}
+	if (result[0] != 0)
+		putchar('0' + result[0]);
+	for (i = 1; i < r_len; i++)
+		putchar('0' + result[i]);
 	putchar('\n');
 	free(result);
-	return (0);
 }
