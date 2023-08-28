@@ -64,17 +64,18 @@ void mul(char *multiplicand, char *multiplier)
 	int len1 = strlen(multiplier);
 	int r_len = len0 + len1;
 	short digit0, digit1, tmp;
-	short *result = malloc(r_len * sizeof(short));
+	short *result;
 	int i;
 
-	if (!result)
-		return;
 	r_len *= (bool)(len0 && len1);
 	if (r_len == 0)
 	{
 		printf("0\n");
 		return;
 	}
+	result = malloc(r_len * sizeof(short));
+	if (!result)
+		return;
 	bzero(result, r_len * sizeof(short));
 	while (--len0 >= 0)
 	{
