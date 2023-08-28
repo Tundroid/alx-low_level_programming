@@ -1,65 +1,98 @@
-#include "main.h"
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <stdbool.h>
 
-char *infinite_add(char*, char*, char*, int);
+void mul(char*, char*);
 /**
-* infinite_add - adds two non-negative integers
-* @n1: string for number 1 to be added
-* @n2: string for number 2 to be added
-* @r: buffer for the result
-* @size_r: size of result buffer
+* main - program entry point
+* @argc: command line args count
+* @argv: command line args vector
 *
-* Return: pointer to result buffer
+* Description: if the number of command line args
+* is not exactly 3 or if either command line args
+* 1 or 2 are not consisting only of digits, Error
+* is printed and the program exits with status code 98
+* Return: 0 always
 */
 int main(int argc, char **argv)
 {
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+	int i, j, check, set0, set1;
+	char *multiplicand, *multiplier;
+
+	multiplicand = *(argv + 1);
+	multiplier = *(argv + 2);
+	set0 = set1 = i = j = 0;
+	if (argc != 3)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	while (*(*(argv + 1) + i) != '\0' || *(*(argv + 2) + j) != '\0')
+	{
+		check = *(*(argv + 1) + i) == '\0' || isdigit(*(*(argv + 1) + i));
+		check *= *(*(argv + 2) + j) == '\0' || isdigit(*(*(argv + 2) + j));
+		if (!check)
+		{
+			printf("Error\n");
+			exit(98);
+		}
+		if (*(*(argv + 1) + i) != '0' && !set0)
+			set0++;
+		if (*(*(argv + 2) + j) != '0' && !set1)
+			set1++;
+		if (*(*(argv + 1) + i) == '0' && !set0)
+			multiplicand++;
+		if (*(*(argv + 2) + j) == '0' && !set1)
+			multiplier++;
+		i = *(*(argv + 1) + i) != '\0' ? i + 1 : i;
+		j = *(*(argv + 2) + j) != '\0' ? j + 1 : j;
+	}
+	mul(multiplicand, multiplier);
+	return (0);
+}
+
+/**
+* mul - multipliers two integers of any length
+* @multiplicand: paramter
+* @multiplier: paramer
+*/
+void mul(char *multiplicand, char *multiplier)
 {
-	int n1Cur, n2Cur, tmpCur, tmp, carry = 0, i = 0, maxlen;
-	char *tmpRes;
+	int len0 = strlen(multiplicand);
+	int len1 = strlen(multiplier);
+	int r_len = len0 + len1;
+	short digit0, digit1, tmp;
+	short *result = malloc(r_len * sizeof(short));
+	int i;
 
-	maxlen = strlen(n1) >= strlen(n2) ? strlen(n1) : strlen(n2);
-
-	if (maxlen + 1 >= size_r)
-		return (0);
-
-	n1Cur = strlen(n1) - 1;
-	n2Cur = strlen(n2) - 1;
-	r = malloc(size_r);
-	tmpRes = malloc(size_r);
-	tmpCur = size_r - 1;
-	tmpRes[tmpCur--] = '\0';
-
-	while (1)
+	r_len *= (bool)(len0 && len1);
+	if (r_len == 0)
 	{
-		if (n1Cur >= 0 && n2Cur >= 0)
-		{
-			tmp = (n1[n1Cur--] - 48) + (n2[n2Cur--] - 48);
-		}
-		else
-		{
-			if (n1Cur < 0 && n2Cur < 0)
-				break;
-			else if (n1Cur < 0)
-				tmp = n2[n2Cur--];
-			else if (n2Cur < 0)
-				tmp = n1[n1Cur--];
-			tmp -= 48;
-		}
-		tmp += carry;
-		tmpRes[tmpCur--] = 48 + tmp % 10;
-		carry = tmp / 10;
+		printf("0\n");
+		return;
 	}
-	if (carry)
-		tmpRes[tmpCur] = 48 + carry;
-	else
-		tmpCur++;
-
-	while (tmpCur <= size_r)
+	memset(result, 0, r_len);
+	while (--len0 >= 0)
 	{
-		r[i++] = tmpRes[tmpCur++];
+		digit0 = multiplicand[len0] - '0';
+		tmp = 0;
+		while (--len1 >= 0)
+		{
+			digit1 = multiplier[len1] - '0';
+			tmp += result[len0 + len1 + 1] + digit0 * digit1;
+			result[len0 + len1 + 1] = tmp % 10;
+			tmp /= 10;
+		}
+		if (tmp > 0)
+			result[len0 + len1 + 2] += tmp;
+		len1 = strlen(multiplier);
 	}
-
-	return (r);
+	if (result[0] != 0)
+		putchar('0' + result[0]);
+	for (i = 1; i < r_len; i++)
+		putchar('0' + result[i]);
+	putchar('\n');
+	free(result);
 }
