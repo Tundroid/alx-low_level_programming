@@ -67,6 +67,8 @@ void mul(char *multiplicand, char *multiplier)
 	short *result = malloc(r_len * sizeof(short));
 	int i;
 
+	if (!result)
+		return;
 	r_len *= (bool)(len0 && len1);
 	if (r_len == 0)
 	{
@@ -86,7 +88,7 @@ void mul(char *multiplicand, char *multiplier)
 			tmp /= 10;
 		}
 		if (tmp > 0)
-			result[len0 + len1 + 2] += tmp;
+			result[len0 + len1 + 1] += tmp;
 		len1 = strlen(multiplier);
 	}
 	if (result[0] != 0)
