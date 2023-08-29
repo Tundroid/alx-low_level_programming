@@ -8,17 +8,16 @@
 */
 size_t free_listint_safe(listint_t **h)
 {
+	listint_t *tmp;
 	size_t nodes = 0;
 	int var;
-	listint_t *tmp;
 
 	if (h == NULL || *h == NULL)
-		return (0);
-
+		return (nodes);
 	while (*h != NULL)
 	{
 		var = *h - (*h)->next;
-		if (var > 0)
+		if (var >= 1)
 		{
 			tmp = (*h)->next;
 			free(*h);
@@ -33,8 +32,6 @@ size_t free_listint_safe(listint_t **h)
 			break;
 		}
 	}
-
 	*h = NULL;
-
 	return (nodes);
 }
