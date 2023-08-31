@@ -12,10 +12,10 @@ unsigned int binary_to_uint(const char *b)
 	size_t conv, i;
 	int n;
 
+	conv = i = 0;
 	if (b && *b)
 	{
 		n = strlen(b);
-		conv = i = 0;
 		while (--n >= 0)
 		{
 			if (*(b + n) != '0' && *(b + n) != '1')
