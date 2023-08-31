@@ -8,11 +8,11 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	size_t conv, i;
+	size_t conv, pow2;
 	int n;
 
 	conv = 0;
-	i = 1;
+	pow2 = 1;
 	if (b && *b)
 	{
 		n = strlen(b);
@@ -20,8 +20,8 @@ unsigned int binary_to_uint(const char *b)
 		{
 			if (*(b + n) != '0' && *(b + n) != '1')
 				return (0);
-			conv += (*(b + n) - '0') * i;
-			i *= 2;
+			conv += (*(b + n) - '0') * pow2;
+			pow2 *= 2;
 		}
 	}
 	return (conv);
