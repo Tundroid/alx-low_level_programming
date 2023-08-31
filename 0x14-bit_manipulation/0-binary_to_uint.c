@@ -1,6 +1,5 @@
 #include "main.h"
 
-int _pow(int, int);
 /**
  * binary_to_uint - converst binary to unsigned int
  * @b: binary string
@@ -12,7 +11,8 @@ unsigned int binary_to_uint(const char *b)
 	size_t conv, i;
 	int n;
 
-	conv = i = 0;
+	conv = 0;
+	i = 1;
 	if (b && *b)
 	{
 		n = strlen(b);
@@ -20,28 +20,9 @@ unsigned int binary_to_uint(const char *b)
 		{
 			if (*(b + n) != '0' && *(b + n) != '1')
 				return (0);
-			conv += (*(b + n) - '0') * _pow(2, i++);
+			conv += (*(b + n) - '0') * i;
+			i *= 2;
 		}
 	}
 	return (conv);
-}
-
-/**
-* _pow - raises an integer to the power of another
-* @b: base
-* @p: power
-*
-* Return: b^p
-*/
-int _pow(int b, int p)
-{
-	if (p == 0)
-		return (1);
-	else if (p == 1)
-		return (b);
-
-	while (p > 0)
-		return (b * _pow(b, --p));
-
-	return (-1);
 }
