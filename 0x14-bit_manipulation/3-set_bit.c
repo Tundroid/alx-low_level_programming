@@ -13,16 +13,18 @@ int set_bit(unsigned long int *n, unsigned int index)
 {
 	size_t i = 0;
 
+	if (index > 64)
+		return (-1);
 	while (i <= index)
 	{
 		if (i == index)
 		{
 			*n |= _pow(2, i);
-			return (1);
+			break;
 		}
 		i++;
 	}
-	return (-1);
+	return (1);
 }
 
 /**

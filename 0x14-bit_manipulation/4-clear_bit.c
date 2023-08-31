@@ -15,7 +15,9 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	unsigned long int m = *n, x = 0;
 	short lsb = 0;
 
-	while (m)
+	if (index > 64)
+		return (-1);
+	while (i <= index)
 	{
 		lsb = m & 1;
 		m >>= 1;
@@ -23,8 +25,6 @@ int clear_bit(unsigned long int *n, unsigned int index)
 			continue;
 		x |= lsb * _pow(2, i - 1);
 	}
-	if (i < index)
-		return (-1);
 	*n &= x;
 	return (1);
 }
