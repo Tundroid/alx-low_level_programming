@@ -26,19 +26,20 @@ int main(int argc, char *argv[])
 	}
 
 	_open = open(argv[1], O_RDONLY);
+	bzero(buffer, 0);
 	_read = read(_open, buffer, 1024);
 	_open_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while (_open >= 0 && _read >= 0)
+	while (_open != -1 && _read != -1)
 	{
-		bzero(buffer, 0);
 	    _write_to = write(_open_to, buffer, _read);
 		if (_open_to == -1 || _write_to == -1)
 		{
 			dprintf(STDERR_FILENO, err_msgs[2], argv[2]);
 			exit(99);
 		}
+		bzero(buffer, 0);
 		_read = read(_open, buffer, 1024);
-		_write_to = open(argv[2], O_WRONLY | O_APPEND);
+		_open_to = open(argv[2], O_WRONLY | O_APPEND);
 	}
 	if (_open < 0 || _read < 0)
 	{
