@@ -1,47 +1,44 @@
-#include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
-/* more headers goes there */
 
-/* betty style doc for function main goes there */
-
-/**
-* main - Entry point of program
-*
-* Return: 0 upon successful execution
-*/
+#define ASCII_0 48
 
 int main(void);
 
+/**
+* main - prints all pobbile combinations of two two-digit numbers
+* without repetition
+*
+* Return: 0 upon successful execution
+*/
 int main(void)
 {
 	int i, j, k, l, cwl, cwr;
 
-	i = 48;
-	while (i <= 57)
+	i = 0;
+	while (i <= 9)
 	{
-		j = 48;
-		while (j <= 57)
+		j = 0;
+		while (j <= 9)
 		{
-			k = 48;
-			while (k <= 57)
+			k = 0;
+			while (k <= 9)
 			{
-				l = 48;
-				while (l <= 57)
+				l = 0;
+				while (l <= 9)
 				{
-					cwl = (i - 48) * 10 + (j - 48);
-					cwr = (k - 48) * 10 + (l - 48);
+					cwl = i * 10 + j;
+					cwr = k * 10 + l;
 					if ((i == j && j == k && k == l) || (i == k && j == l) || (cwr < cwl))
 					{
 						l++;
 						continue;
 					}
-					putchar(i);
-					putchar(j);
+					putchar(i + ASCII_0);
+					putchar(j + ASCII_0);
 					putchar(' ');
-					putchar(k);
-					putchar(l);
-					if (i != 57 || j != 56 || k != 57 || l != 57)
+					putchar(k + ASCII_0);
+					putchar(l + ASCII_0);
+					if (i < 9 || j < 8 || k < 9 || l < 9)
 					{
 						putchar(',');
 						putchar(' ');

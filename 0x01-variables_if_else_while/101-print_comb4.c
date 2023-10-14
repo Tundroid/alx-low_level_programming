@@ -1,12 +1,8 @@
-#include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
-/* more headers goes there */
-
-/* betty style doc for function main goes there */
 
 /**
-* main - Entry point of program
+* main - prints all combinations of three-digit numbers
+* without repetition
 *
 * Return: 0 upon successful execution
 */
@@ -28,7 +24,7 @@ int main(void)
 					putchar(i);
 					putchar(j);
 					putchar(k);
-					if (i != 55 || j != 56 || k != 57)
+					if (i < 55 || j < 56 || k < 57)
 					{
 						putchar(',');
 						putchar(' ');

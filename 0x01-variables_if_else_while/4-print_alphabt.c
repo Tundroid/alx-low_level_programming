@@ -1,12 +1,7 @@
-#include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
-/* more headers goes there */
-
-/* betty style doc for function main goes there */
 
 /**
-* main - Entry point of program
+* main - prints alphabet in lowercase except q and e
 *
 * Return: 0 upon successful execution
 */

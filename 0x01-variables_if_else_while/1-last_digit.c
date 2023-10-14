@@ -1,12 +1,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-/* more headers goes there */
-
-/* betty style doc for function main goes there */
 
 /**
-* main - Entry point of program
+* main - checks the last value of a random number
+* whether it is 0, greater than 5 or in between
 *
 * Return: 0 upon successful execution
 */

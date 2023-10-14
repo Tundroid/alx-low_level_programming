@@ -1,12 +1,8 @@
-#include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
-/* more headers goes there */
-
-/* betty style doc for function main goes there */
 
 /**
-* main - Entry point of program
+* main - prints combination of two-digit numbers
+* without duplicate
 *
 * Return: 0 upon successful execution
 */
@@ -20,15 +16,12 @@ int main(void)
 		j = i + 1;
 		while (j <= 57)
 		{
-			if (i != j)
+			putchar(i);
+			putchar(j);
+			if (i < 56 || j < 57)
 			{
-				putchar(i);
-				putchar(j);
-				if (i != 56 || j != 57)
-				{
-					putchar(',');
-					putchar(' ');
-				}
+				putchar(',');
+				putchar(' ');
 			}
 			j++;
 		}

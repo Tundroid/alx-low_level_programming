@@ -1,12 +1,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-/* more headers goes there */
-
-/* betty style doc for function main goes there */
 
 /**
-* main - Entry point of program
+* main - checks if a random value is 0, -ve or +ve
 *
 * Return: 0 upon successful execution
 */
