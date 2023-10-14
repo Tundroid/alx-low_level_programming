@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define ASCII_0 48
+
 /**
 * main - print all digits in base 10 without using char
 *
@@ -7,10 +9,10 @@
 */
 int main(void)
 {
-	short digit = 48;
+	short digit = 0;
 
-	while (digit <= 57)
-		putchar(digit++);
+	while (digit <= 9)
+		putchar(digit++ + ASCII_0);
 	putchar('\n');
 	return (0);
 }

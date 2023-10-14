@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define ASCII_0 48
+
 /**
 * main - prints combination of two-digit numbers
 * without duplicate
@@ -10,15 +12,15 @@ int main(void)
 {
 	int i, j;
 
-	i = 48;
-	while (i <= 57)
+	i = 0;
+	while (i <= 9)
 	{
 		j = i + 1;
-		while (j <= 57)
+		while (j <= 9)
 		{
-			putchar(i);
-			putchar(j);
-			if (i < 56 || j < 57)
+			putchar(i + ASCII_0);
+			putchar(j + ASCII_0);
+			if (i < 8 || j < 9)
 			{
 				putchar(',');
 				putchar(' ');

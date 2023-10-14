@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define ASCII_0 48
+
 /**
 * main - prints all possible combinations of
 * single-digit numbers
@@ -8,12 +10,12 @@
 */
 int main(void)
 {
-	int digit = 48;
+	int digit = 0;
 
-	while (digit <= 57)
+	while (digit <= 9)
 	{
-		putchar(digit);
-		if (digit++ < 57)
+		putchar(digit + ASCII_0);
+		if (digit++ < 9)
 		{
 			putchar(',');
 			putchar(' ');
