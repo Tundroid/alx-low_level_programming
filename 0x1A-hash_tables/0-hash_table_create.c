@@ -13,8 +13,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (ht)
 	{
 		ht->size = size;
-		ht->array = (hash_node_t **)malloc(size * sizeof(hash_node_t *));
-		bzero(ht->array, size * sizeof(hash_node_t *));
+		ht->array = (hash_node_t **)calloc(size, sizeof(hash_node_t *));
 	}
 	return (ht);
 }

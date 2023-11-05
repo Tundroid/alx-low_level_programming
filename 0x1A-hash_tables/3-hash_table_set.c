@@ -21,19 +21,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		if (new->key && new->value)
 		{
 			index = key_index((unsigned char *)key, ht->size);
-			if (ht->array[index])
-			{
-				ht->array[index]->value = realloc(ht->array[index]->value,
-													strlen(value) + 1);
-				if (ht->array[index]->value)
-					strcpy(ht->array[index]->value, value);
-			}
-			else
-			{
-				new->next = ht->array[index];
-				ht->array[index] = new;
-			}
-			return (1);
+			new->next = ht->array[index];
+			ht->array[index] = new;
 		}
 	}
 	return (0);
