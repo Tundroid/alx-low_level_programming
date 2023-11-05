@@ -1,5 +1,7 @@
 #include "hash_tables.h"
 
+int hash_table_set(hash_table_t *ht, const char *key, const char *value);
+
 /**
  * hash_table_set - get index of key
  * @ht: hash table
@@ -10,11 +12,11 @@
 */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new = malloc(sizeof(hash_node_t));
+	hash_node_t *new = NULL;
 	size_t index;
 	hash_node_t *tmp;
 
-	if (ht && new && *key)
+	if (ht && *key)
 	{
 		index = key_index((unsigned char *)key, ht->size);
 		if (ht->array[index])
@@ -38,14 +40,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				tmp = tmp->next;
 			}
 		}
-		new->key = strdup(key);
-		new->value = strdup(value);
-		new->next = NULL;
-		if (new->key && new->value)
+		new = malloc(sizeof(hash_node_t));
+		if (new)
 		{
-			new->next = ht->array[index];
-			ht->array[index] = new;
-			return (1);
+			new->key = strdup(key);
+			new->value = strdup(value);
+			new->next = NULL;
+			if (new->key && new->value)
+			{
+				new->next = ht->array[index];
+				ht->array[index] = new;
+				return (1);
+			}
 		}
 	}
 	return (0);
