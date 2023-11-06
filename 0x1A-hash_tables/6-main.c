@@ -10,11 +10,32 @@
  */
 int main(void)
 {
-    hash_table_t *ht;
+    shash_table_t *ht;
+    char *key;
+    char *value;
 
-    ht = hash_table_create(1024);
-    hash_table_set(ht, "C", "fun");
-	hash_table_print(ht);
-    hash_table_delete(ht);
+    ht = shash_table_create(1024);
+    shash_table_set(ht, "c", "fun");
+    shash_table_set(ht, "python", "awesome");
+    shash_table_set(ht, "Bob", "and Kris love asm");
+    shash_table_set(ht, "N", "queens");
+    shash_table_set(ht, "Asterix", "Obelix");
+    shash_table_set(ht, "Betty", "Cool");
+    shash_table_set(ht, "98", "Battery Streetz");
+    key = strdup("Tim");
+    value = strdup("Britton");
+    shash_table_set(ht, key, value);
+    key[0] = '\0';
+    value[0] = '\0';
+    free(key);
+    free(value);
+    shash_table_set(ht, "98", "Battery Street");
+    shash_table_set(ht, "hetairas", "Bob");
+    shash_table_set(ht, "hetairas", "Bob Z");
+    shash_table_set(ht, "mentioner", "Bob");
+    shash_table_set(ht, "hetairas", "Bob Z Chu");
+    shash_table_print(ht);
+	shash_table_print_rev(ht);
+    shash_table_delete(ht);
     return (EXIT_SUCCESS);
 }

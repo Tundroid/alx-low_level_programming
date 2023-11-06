@@ -99,7 +99,8 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 				}
 				else
 				{
-					if (strcmp(key, ht->stail->key) == 1)
+					if (key_index((__u_char *)key, ht->size) >
+							key_index((__u_char *)ht->stail->key, ht->size))
 					{
 						new->snext = NULL;
 						new->sprev = ht->stail;
