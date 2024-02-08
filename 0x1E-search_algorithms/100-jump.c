@@ -2,12 +2,11 @@
 #include <math.h>
 
 /**
- * jump_search - searches for a value in an array of
- * integers using the Jump search algorithm
+ * jump_search - ump search algorithm
  *
- * @array: input array
- * @size: size of the array
- * @value: value to search in
+ * @array: of integers
+ * @size: of array
+ * @value: value to be searched
  * Return: index of the number
  */
 int jump_search(int *array, size_t size, int value)
@@ -24,12 +23,12 @@ int jump_search(int *array, size_t size, int value)
 	do {
 		printf("Value checked array[%d] = [%d]\n", index, array[index]);
 
-		if (array[index] == value)
+		if (*(array + index) == value)
 			return (index);
 		k++;
 		prev = index;
 		index = k * m;
-	} while (index < (int)size && array[index] < value);
+	} while (index < (int)size && *(array + index) < value);
 
 	printf("Value found between indexes [%d] and [%d]\n", prev, index);
 
