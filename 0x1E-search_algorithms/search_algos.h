@@ -33,6 +33,7 @@ typedef struct listint_s
  * for Holberton project
  */
 
+
 typedef struct skiplist_s
 {
 	int n;
