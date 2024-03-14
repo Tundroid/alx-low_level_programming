@@ -53,6 +53,7 @@ int rec_search(int *array, size_t size, int value)
  */
 int advanced_binary(int *array, size_t size, int value)
 {
+	
 	int index;
 
 	index = rec_search(array, size, value);
