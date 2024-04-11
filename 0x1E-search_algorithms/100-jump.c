@@ -13,7 +13,7 @@ int jump_search(int *array, size_t size, int value)
 {
 	int index, m, k, prev;
 
-	if (array == NULL || size == 0)
+	if (!array || !size)
 		return (-1);
 
 	m = (int)sqrt((double)size);
